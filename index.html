@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Próximo Módulo - Cuenta Regresiva</title>
+    <title>Cronómetro</title>
     <style>
         body {
             background-color: black;
@@ -14,40 +14,40 @@
             margin: 0;
         }
 
-        .title-container {
-            background-image: url('https://i.ibb.co/WWZfW4D/CLASE-MUESTRA-5.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            width: 100%;
-            height: 210px;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .logo {
+            width: 100px;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
         }
 
         h1 {
-            font-size: 3em;
-            margin: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffcc33;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .title-container {
+            background-image: url('https://i.ibb.co/44DDXyB/Dise-o-sin-t-tulo-17.png');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
         }
 
         #countdown {
-            font-size: 2.5em;
-            margin-top: 20px;
-            padding: 15px;
+            font-size: 3em;
+            padding: 20px;
             border-radius: 10px;
             background: linear-gradient(90deg, #ff6f61, #ffcc33);
             color: white;
             display: inline-block;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            width: 300px; /* Ancho fijo para el cronómetro */
+            margin-top: 20px;
             transition: transform 0.2s;
         }
 
@@ -55,217 +55,147 @@
             transform: scale(1.05);
         }
 
-        .countdown-container {
+        .main-image {
+            width: 80%; 
+            max-width: 800px; 
+            height: auto;
+            max-height: 400px; 
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .small-images {
             display: flex;
-            flex-direction: column; /* Cambiado a columna */
-            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 20px;
             align-items: center;
-            margin-top: 20px;
         }
 
-        .alert-container {
-            background-color: #ffcc00;
-            color: black;
-            font-size: 1.5em;
-            padding: 10px;
+        .small-images img {
+            width: 100px;
+            height: 100px;
             border-radius: 10px;
-            width: 300px; /* Ancho fijo igual al del cronómetro */
-            margin-top: 10px; /* Margen entre el cronómetro y el contenedor de alerta */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .container-wrapper {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            width: 100%;
-            margin-top: 20px;
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            width: 100%;
-            max-width: 600px; /* Ancho máximo para igualar contenedores */
-        }
-
-        .container1 {
-            flex: 0 0 70%; /* Ocupa el 70% */
+            align-items: flex-start;
+            margin-top: 20px;
         }
 
         .container2 {
-            flex: 0 0 60%; /* Cambiar a 60% para hacerlo más estrecho */
+            text-align: left;
+            margin-top: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Añadir sombra */
         }
 
-        .image-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 10px; /* Espacio entre las imágenes y el texto */
+        .alert-title {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #ffcc33;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        img {
-            width: 300px; /* Ancho fijo para todas las imágenes */
-            height: auto; /* Mantiene la proporción */
-            margin: 10px;
-            border-radius: 15px; /* Bordes redondeados para las imágenes */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para las imágenes */
+        h2 {
+            margin-bottom: 10px;
+            color: #ffcc33;
         }
 
-        .small-image-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
+        ul {
+            list-style-type: disc; /* Cambiar a puntos en la lista */
+            padding-left: 20px; /* Sangría a la izquierda */
+            line-height: 1.5; /* Mayor espacio entre líneas */
         }
 
-        .small-image {
-            width: 100px; /* Ajustado a 100px para imágenes pequeñas */
-            height: 100px;
-            margin: 0 5px;
-            border-radius: 15px; /* Bordes redondeados para las imágenes pequeñas */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para las imágenes pequeñas */
+        li {
+            margin-bottom: 10px; /* Espacio entre elementos de la lista */
+            color: #ffffff; /* Color blanco para el texto */
+            font-size: 1.2em; /* Tamaño de fuente para los elementos de la lista */
         }
 
         footer {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            position: relative;
-            bottom: 0;
-            max-width: 60%; /* Cambiar a 60% para hacerlo más estrecho */
-            width: 100%; /* Asegura que ocupe el 100% del ancho */
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
             text-align: center;
-            margin: 20px auto; /* Centra el pie de página */
-        }
-
-        /* Responsividad */
-        @media (max-width: 1280px) {
-            .title-container {
-                height: auto;
-            }
-
-            h1 {
-                font-size: 2.5em;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .title-container {
-                height: auto;
-            }
-
-            .container-wrapper {
-                flex-direction: column; /* Los contenedores se apilan en pantallas pequeñas */
-            }
-
-            .container {
-                width: 100%; /* Los contenedores ocupan todo el ancho en pantallas pequeñas */
-                max-width: 100%;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            #countdown {
-                font-size: 1.5em;
-            }
-
-            .alert-container {
-                font-size: 1.2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            #countdown {
-                font-size: 1.2em;
-            }
-
-            img {
-                max-width: 100%; /* Asegura que las imágenes se ajusten en móviles */
-            }
-
-            .small-image {
-                width: 80px;
-                height: 80px;
-            }
+            font-size: 0.9em;
+            border-top: 1px solid #ffcc33;
         }
     </style>
 </head>
 <body>
 
+    <img src="https://i.ibb.co/10kYp27/Escudo-cps-sin-fondo-1-1.png" alt="Escudo CPS" class="logo">
+    
     <div class="title-container">
-        <h1>Cambios en el módulo</h1>
-    </div>
-
-    <div class="countdown-container">
-        <div id="countdown"></div>
-        <div class="alert-container">Atento al cambio</div>
-    </div>
-
-    <div class="container-wrapper">
-        <div class="container container1">
-            <h2>Cambio en el apunte del módulo</h2>
-            <div class="image-container">
-                <img src="https://i.ibb.co/QYhG1tY/Leonardo-Phoenix-A-vibrant-3-D-render-of-a-futuristic-neonlit-s-1.jpg" alt="Imagen de Ejemplo 1">
-                <img src="https://i.ibb.co/zSprg1B/Leonardo-Phoenix-A-highcontrast-cinematic-photograph-featuring-3.jpg" alt="Imagen de Ejemplo 2" style="max-height: 200px;">
-            </div>
-            <div class="small-image-container">
-                <img class="small-image" src="https://i.ibb.co/W2Wtf3N/Leonardo-Phoenix-A-breathtaking-highdefinition-3-D-render-preci-1.jpg" alt="Imagen pequeña 1">
-                <img class="small-image" src="https://i.ibb.co/BrctmMW/Leonardo-Phoenix-A-vibrant-3-D-rendered-image-measuring-100x100-1.jpg" alt="Imagen pequeña 2">
-                <img class="small-image" src="https://i.ibb.co/z4dFmm7/Leonardo-Phoenix-A-highly-detailed-3-D-render-of-a-futuristic-v-3.jpg" alt="Imagen pequeña 3">
-            </div>
+        <div class="title-background">
+            <h1>Cambios</h1>
         </div>
+    </div>
+
+    <div id="countdown">00d 00h 00m 00s</div>
+
+    <h2 class="alert-title">Tema: Presente simple Verbo - To Be</h2>
+
+    <div class="container">
+        <img src="https://i.ibb.co/QYhG1tY/Leonardo-Phoenix-A-vibrant-3-D-render-of-a-futuristic-neonlit-s-1.jpg" alt="Imagen Principal" class="main-image">
         
-        <div class="container container2">
-            <h2>Estos serán los cambios</h2>
-            <ul style="text-align: left; margin: 0; padding: 0;">
-                <li>Tendremos otro tema.</li>
-                <li>Diferente vocabulario.</li>
-                <li>Otro video explicativo.</li>
-                <li>Mejoras para que los alumnos apunten en su cuaderno de notas.</li>
-            </ul>
+        <div class="small-images">
+            <img src="https://i.ibb.co/W2Wtf3N/Leonardo-Phoenix-A-breathtaking-highdefinition-3-D-render-preci-1.jpg" alt="Imagen 1">
+            <img src="https://i.ibb.co/BrctmMW/Leonardo-Phoenix-A-vibrant-3-D-rendered-image-measuring-100x100-1.jpg" alt="Imagen 2">
+            <img src="https://i.ibb.co/z4dFmm7/Leonardo-Phoenix-A-highly-detailed-3-D-render-of-a-futuristic-v-3.jpg" alt="Imagen 3">
         </div>
+    </div>
+
+    <div class="container container2">
+        <h2>Estos serán los cambios</h2>
+        <ul style="text-align: left; margin: 0; padding: 0;">
+            <li>Tema: Presente simple - Verbo To Be.</li>
+            <li>Diferente vocabulario.</li>
+            <li>Otro video explicativo.</li>
+            <li>Mejoras para que los alumnos apunten en su cuaderno de notas.</li>
+        </ul>
     </div>
 
     <footer>
-        © 2024 English School CPS. Todos los derechos reservados.
+        &copy; 2024 English School CPS. Todos los derechos reservados.
     </footer>
 
     <script>
-        // Cambia aquí la fecha y hora de finalización manualmente
-        // Formato: new Date('mes día, año hora:minutos:segundos')
-        var countDownDate = new Date('October 2, 2024 10:00:00').getTime();
+        let countdownInterval;
 
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
+        // Ajusta estos valores manualmente
+        const hours = 50; // Número de horas aquí
+        const minutes = 0; // Número de minutos aquí
 
-            // Calcula el tiempo restante
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const totalTime = (hours * 60 * 60 + minutes * 60) * 1000; // Total en milisegundos
+        const endTime = new Date().getTime() + totalTime;
 
-            // Muestra el resultado en el elemento con id="countdown"
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        // Iniciar el cronómetro
+        countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = endTime - now;
 
-            // Si la cuenta regresiva ha terminado, muestra un mensaje
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hrs + "h " + mins + "m " + secs + "s ";
+
             if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "¡El módulo ha comenzado!";
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "¡El tiempo ha terminado!";
             }
         }, 1000);
     </script>
+
 </body>
 </html>
