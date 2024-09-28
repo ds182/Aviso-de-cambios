@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronómetro</title>
+    <title>Cambio de Tema</title>
     <style>
         body {
             background-color: black;
@@ -12,15 +12,6 @@
             text-align: center;
             padding: 20px;
             margin: 0;
-        }
-
-        .logo {
-            width: 100px;
-            margin-bottom: 10px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1;
         }
 
         h1 {
@@ -40,19 +31,17 @@
             position: relative;
         }
 
-        #countdown {
-            font-size: 3em;
+        /* Estilo del contenedor del mensaje */
+        #message {
+            font-size: 2em;
             padding: 20px;
             border-radius: 10px;
             background: linear-gradient(90deg, #ff6f61, #ffcc33);
             color: white;
             display: inline-block;
             margin-top: 20px;
-            transition: transform 0.2s;
-        }
-
-        #countdown:hover {
-            transform: scale(1.05);
+            width: 60%; /* Ajusta el ancho según sea necesario */
+            max-width: 800px; /* Ancho máximo */
         }
 
         .main-image {
@@ -105,6 +94,8 @@
         h2 {
             margin-bottom: 10px;
             color: #ffcc33;
+            text-decoration: underline; /* Subrayar el título */
+            font-weight: bold; /* Negrita para resaltar */
         }
 
         ul {
@@ -132,17 +123,16 @@
 </head>
 <body>
 
-    <img src="https://i.ibb.co/10kYp27/Escudo-cps-sin-fondo-1-1.png" alt="Escudo CPS" class="logo">
-    
     <div class="title-container">
         <div class="title-background">
-            <h1>Cambios</h1>
+            <h1>Cambio de Tema del Módulo</h1>
         </div>
     </div>
 
-    <div id="countdown">00d 00h 00m 00s</div>
+    <!-- Contenedor del mensaje -->
+    <div id="message">Cambio de tema del módulo gratuito el día 28/09/2024 a las 12:00 PM.</div>
 
-    <h2 class="alert-title">Tema: Presente simple Verbo - To Be</h2>
+    <h2 class="alert-title">¡ATENCIÓN! El nuevo tema será el <span style="color: #ff6f61;">verbo "to be" en presente simple</span>.</h2>
 
     <div class="container">
         <img src="https://i.ibb.co/QYhG1tY/Leonardo-Phoenix-A-vibrant-3-D-render-of-a-futuristic-neonlit-s-1.jpg" alt="Imagen Principal" class="main-image">
@@ -157,7 +147,7 @@
     <div class="container container2">
         <h2>Estos serán los cambios</h2>
         <ul style="text-align: left; margin: 0; padding: 0;">
-            <li>Tema: Presente simple - Verbo To Be.</li>
+            <li>Tendremos otro tema.</li>
             <li>Diferente vocabulario.</li>
             <li>Otro video explicativo.</li>
             <li>Mejoras para que los alumnos apunten en su cuaderno de notas.</li>
@@ -168,34 +158,6 @@
         &copy; 2024 English School CPS. Todos los derechos reservados.
     </footer>
 
-    <script>
-        let countdownInterval;
-
-        // Ajusta estos valores manualmente
-        const hours = 50; // Número de horas aquí
-        const minutes = 0; // Número de minutos aquí
-
-        const totalTime = (hours * 60 * 60 + minutes * 60) * 1000; // Total en milisegundos
-        const endTime = new Date().getTime() + totalTime;
-
-        // Iniciar el cronómetro
-        countdownInterval = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = endTime - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = days + "d " + hrs + "h " + mins + "m " + secs + "s ";
-
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.getElementById("countdown").innerHTML = "¡El tiempo ha terminado!";
-            }
-        }, 1000);
-    </script>
-
 </body>
 </html>
+
